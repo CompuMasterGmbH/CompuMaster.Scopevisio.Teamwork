@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>$id$</id>
+		<title>$title$</title>
+        <version>$version$</version>
+        <authors>$author$</authors>
+        <owners>$author$</owners>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <developmentDependency>false</developmentDependency>
+        <description>Client library for Scopevisio Teamwork provided by Scopevisio AG, https://www.scopevisio.com/)</description>
+		<copyright>2020 CompuMaster GmbH</copyright>
+		<tags>CompuMaster camm Scopevisio CenterDevice HandwerkerVisio Teamwork CompuMaster.Scopevisio.Teamwork</tags>
+		<licenseUrl>https://raw.githubusercontent.com/CompuMasterGmbH/CompuMaster.Scopevisio.Teamwork/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/CompuMasterGmbH/CompuMaster.Scopevisio.Teamwork</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/CompuMasterGmbH/CompuMaster.Scopevisio.Teamwork/master/logo_64x64.png</iconUrl>
+		<dependencies>
+            <dependency id="CompuMaster.CenterDevice.Rest" version="12.0.3" />
+            <dependency id="NewtonSoft.Json" version="12.0.3" />
+            <dependency id="JsonSubTypes" version="1.6.0" />
+            <dependency id="RestSharp" version="105.1.0" />
+        </dependencies>
+    </metadata>
+	<!--
+    <files>
+        <comment "!- - A readme.txt will be displayed when the package is installed - -" />
+        <file src="..\..\README.md" target="" />
+        <file src="..\..\docs\**\*.*" target="docs" />
+    </files>
+	-->
+</package>
