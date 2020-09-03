@@ -15,7 +15,7 @@
 		<projectUrl>https://github.com/CompuMasterGmbH/CompuMaster.Scopevisio.Teamwork</projectUrl>
 		<iconUrl>https://raw.githubusercontent.com/CompuMasterGmbH/CompuMaster.Scopevisio.Teamwork/master/logo_64x64.png</iconUrl>
 		<dependencies>
-            <dependency id="CompuMaster.CenterDevice.Rest" version="12.0.3" />
+            <dependency id="CompuMaster.CenterDevice.Rest" version="2020.09.03" />
             <dependency id="NewtonSoft.Json" version="12.0.3" />
             <dependency id="JsonSubTypes" version="1.6.0" />
             <dependency id="RestSharp" version="105.1.0" />

@@ -31,14 +31,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CompuMaster.CenterDevice.Rest, Version=2020.9.3.100, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CompuMaster.CenterDevice.Rest.2020.9.3.100\lib\net462\CompuMaster.CenterDevice.Rest.dll</HintPath>
+    </Reference>
     <Reference Include="CompuMaster.Scopevisio.OpenApi, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CompuMaster.Scopevisio.OpenApi.0.1.0\lib\net48\CompuMaster.Scopevisio.OpenApi.dll</HintPath>
     </Reference>
     <Reference Include="JsonSubTypes, Version=1.7.0.0, Culture=neutral, PublicKeyToken=ee75fc290dbc1176, processorArchitecture=MSIL">
       <HintPath>..\..\packages\JsonSubTypes.1.7.0\lib\net47\JsonSubTypes.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.9.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.9\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=106.11.4.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\..\packages\RestSharp.106.11.4\lib\net452\RestSharp.dll</HintPath>
@@ -61,16 +70,6 @@
     <Compile Include="Scopevisio.CenterDeviceApi\TeamworkOAuthInfoProvider.cs" />
     <Compile Include="Scopevisio.CenterDeviceApi\TeamworkRestClient.cs" />
     <Compile Include="Scopevisio.CenterDeviceApi\TeamworkRestClientConfiguration.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CenterDevice.Model\CenterDevice.Model.csproj">
-      <Project>{c16f46d8-461b-4fe3-b8d6-26b3dbe6fa6c}</Project>
-      <Name>CenterDevice.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CenterDevice.Rest\CenterDevice.Rest.csproj">
-      <Project>{6fdbda8a-ee11-46cb-b416-759f0800420b}</Project>
-      <Name>CenterDevice.Rest</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

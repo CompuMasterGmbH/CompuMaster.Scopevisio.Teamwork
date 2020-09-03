@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Scopevisio Teamwork Library")]
+[assembly: AssemblyTitle("CompuMaster.Scopevisio.Teamwork")]
 [assembly: AssemblyDescription("Client access library for the Teamwork part of OpenScope API https://www.openscope.de/ (REST web API interface provided by Scopevisio AG, https://www.scopevisio.com/), library generated from Swagger/OpenAPI doc at https://appload.scopevisio.com/rest/swagger.json")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CompuMaster")]
