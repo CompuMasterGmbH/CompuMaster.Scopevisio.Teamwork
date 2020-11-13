@@ -36,8 +36,8 @@
     <Reference Include="CompuMaster.CenterDevice.Rest, Version=2020.9.3.100, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CompuMaster.CenterDevice.Rest.2020.9.3.100\lib\net462\CompuMaster.CenterDevice.Rest.dll</HintPath>
     </Reference>
-    <Reference Include="CompuMaster.Scopevisio.OpenApi, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CompuMaster.Scopevisio.OpenApi.0.1.0\lib\net48\CompuMaster.Scopevisio.OpenApi.dll</HintPath>
+    <Reference Include="CompuMaster.Scopevisio.OpenApi, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CompuMaster.Scopevisio.OpenApi.0.1.1\lib\net472\CompuMaster.Scopevisio.OpenApi.dll</HintPath>
     </Reference>
     <Reference Include="JsonSubTypes, Version=1.6.0.0, Culture=neutral, PublicKeyToken=ee75fc290dbc1176, processorArchitecture=MSIL">
       <HintPath>..\packages\JsonSubTypes.1.6.0\lib\net47\JsonSubTypes.dll</HintPath>
