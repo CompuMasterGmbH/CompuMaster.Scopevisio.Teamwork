@@ -34,7 +34,7 @@ namespace CenterDevice.SampleApp
                 CompuMaster.Scopevisio.Teamwork.TeamworkIOClient IOClient = new CompuMaster.Scopevisio.Teamwork.TeamworkIOClient(OpenScopeClient);
 
                 //Show available directory structure
-                if (false)
+                if (true)
                 {
                     System.Console.WriteLine("\r\n## Initial directory listing - flat");
                     System.Console.WriteLine(IOClient.RootDirectory.ToStringListing(false, true));
@@ -141,7 +141,7 @@ namespace CenterDevice.SampleApp
                 }
 
                 //File details
-                if (true)
+                if (false)
                 {
                     IO.DirectoryInfo BaseTestPath;
                     string OpenTestPath;
@@ -165,7 +165,7 @@ namespace CenterDevice.SampleApp
                 }
                 
                 //File upload/download/deletion
-                if (true)
+                if (false)
                 {
                     IO.DirectoryInfo BaseTestPath;
                     string OpenTestPath;

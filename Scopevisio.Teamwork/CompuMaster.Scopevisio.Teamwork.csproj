@@ -34,9 +34,8 @@
     <DocumentationFile>bin\Release\CompuMaster.Scopevisio.Teamwork.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CompuMaster.CenterDevice.Rest, Version=2020.9.3.100, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CompuMaster.CenterDevice.Rest.2020.9.3.100\lib\net462\CompuMaster.CenterDevice.Rest.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="CompuMaster.CenterDevice.Rest, Version=2021.4.28.100, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CompuMaster.CenterDevice.Rest.2021.4.28.100\lib\net462\CompuMaster.CenterDevice.Rest.dll</HintPath>
     </Reference>
     <Reference Include="CompuMaster.Scopevisio.OpenApi, Version=0.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CompuMaster.Scopevisio.OpenApi.0.1.4\lib\net472\CompuMaster.Scopevisio.OpenApi.dll</HintPath>
