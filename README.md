@@ -2,7 +2,9 @@
 
 ## Frameworks supported
 
-* .NET 4.8 or later
+* .NET 5.0 or later
+* .NET Framework 4.8 or later
+* .NET Standard 2.0 or later
 
 ## Getting Started
 
