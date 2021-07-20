@@ -11,7 +11,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Description>Client access library for the Teamwork part of OpenScope API https://www.openscope.de/ (REST web API interface provided by Scopevisio AG, https://www.scopevisio.com/), library generated from Swagger/OpenAPI doc at https://appload.scopevisio.com/rest/swagger.json</Description>
 		<PackageProjectUrl>https://github.com/CompuMasterGmbH/CompuMaster.Scopevisio.Teamwork</PackageProjectUrl>
-		<PackageIcon>..\logo_64x64.png</PackageIcon>
+		<PackageIcon>logo_64x64.png</PackageIcon>
 		<RepositoryUrl>https://github.com/CompuMasterGmbH/CompuMaster.Scopevisio.Teamwork.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags> CompuMaster camm Scopevisio CenterDevice HandwerkerVisio Teamwork CompuMaster.Scopevisio.Teamwork </PackageTags>
@@ -125,10 +125,6 @@
 	  </PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-	  <None Include="..\logo_64x64.png">
-	    <Pack>True</Pack>
-	    <PackagePath></PackagePath>
-	  </None>
 	  <None Include="logo_64x64.png">
 	    <Pack>True</Pack>
 	    <PackagePath></PackagePath>
