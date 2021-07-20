@@ -1,106 +1,133 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1878F1A6-B870-4AD4-AC7A-62430667740F}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CompuMaster.Scopevisio.Teamwork</RootNamespace>
-    <AssemblyName>CompuMaster.Scopevisio.Teamwork</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\CompuMaster.Scopevisio.Teamwork.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\CompuMaster.Scopevisio.Teamwork.xml</DocumentationFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="CompuMaster.CenterDevice.Rest, Version=2021.4.28.100, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CompuMaster.CenterDevice.Rest.2021.4.28.100\lib\net462\CompuMaster.CenterDevice.Rest.dll</HintPath>
-    </Reference>
-    <Reference Include="CompuMaster.Scopevisio.OpenApi, Version=0.1.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CompuMaster.Scopevisio.OpenApi.0.1.4\lib\net472\CompuMaster.Scopevisio.OpenApi.dll</HintPath>
-    </Reference>
-    <Reference Include="JsonSubTypes, Version=1.7.0.0, Culture=neutral, PublicKeyToken=ee75fc290dbc1176, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\JsonSubTypes.1.7.0\lib\net47\JsonSubTypes.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="log4net, Version=2.0.9.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.9\lib\net45\log4net.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="RestSharp, Version=106.11.4.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\RestSharp.106.11.4\lib\net452\RestSharp.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Scopevisio.CenterDeviceApi\TeamworkClientErrorHandler.cs" />
-    <Compile Include="Scopevisio.Teamwork\TeamworkIOClient.cs" />
-    <Compile Include="Scopevisio.CenterDeviceApi\TeamworkOAuthInfo.cs" />
-    <Compile Include="Scopevisio.CenterDeviceApi\TeamworkOAuthInfoProvider.cs" />
-    <Compile Include="Scopevisio.CenterDeviceApi\TeamworkRestClient.cs" />
-    <Compile Include="Scopevisio.CenterDeviceApi\TeamworkRestClientConfiguration.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="_CreateNewNuGetPackage\Config.ps1" />
-    <None Include="_CreateNewNuGetPackage\DoNotModify\CreateNuGetPackage.ps1" />
-    <None Include="_CreateNewNuGetPackage\DoNotModify\New-NuGetPackage.ps1" />
-    <None Include="_CreateNewNuGetPackage\DoNotModify\UploadNuGetPackage.ps1" />
-    <None Include="_CreateNewNuGetPackage\RunMeToUploadNuGetPackage.cmd" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>REM Create a NuGet package for this project and place the .nupkg file in the project's output directory.
-REM If you see this in Visual Studio's Error List window, check the Output window's Build tab for the actual error.
-ECHO Creating NuGet package in Post-Build event...
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "&amp; '$(ProjectDir)_CreateNewNuGetPackage\DoNotModify\CreateNuGetPackage.ps1' -ProjectFilePath '$(ProjectPath)' -OutputDirectory '$(TargetDir)' -BuildConfiguration '$(ConfigurationName)' -BuildPlatform '$(PlatformName)'"</PostBuildEvent>
-  </PropertyGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<RootNamespace>CompuMaster.Scopevisio.Teamwork</RootNamespace>
+		<AssemblyName>CompuMaster.Scopevisio.Teamwork</AssemblyName>
+		<TargetFrameworks>netstandard2.0;netcoreapp3.1;net5.0;net48</TargetFrameworks>
+		<Version>2021.4.22.100</Version>
+		<Authors>Jochen Wezel</Authors>
+		<Company>CompuMaster GmbH</Company>
+		<Copyright>2019-2021 CompuMaster GmbH</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Description>Client access library for the Teamwork part of OpenScope API https://www.openscope.de/ (REST web API interface provided by Scopevisio AG, https://www.scopevisio.com/), library generated from Swagger/OpenAPI doc at https://appload.scopevisio.com/rest/swagger.json</Description>
+		<PackageProjectUrl>https://github.com/CompuMasterGmbH/CompuMaster.Scopevisio.Teamwork</PackageProjectUrl>
+		<PackageIcon>..\logo_64x64.png</PackageIcon>
+		<RepositoryUrl>https://github.com/CompuMasterGmbH/CompuMaster.Scopevisio.Teamwork.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags> CompuMaster camm Scopevisio CenterDevice HandwerkerVisio Teamwork CompuMaster.Scopevisio.Teamwork </PackageTags>
+		<Configurations>Debug;Release;CI_CD</Configurations>
+	</PropertyGroup>
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		<ProjectGuid>{1878F1A6-B870-4AD4-AC7A-62430667740F}</ProjectGuid>
+		<OutputType>Library</OutputType>
+		<AppDesignerFolder>Properties</AppDesignerFolder>
+		<RootNamespace>CompuMaster.Scopevisio.Teamwork</RootNamespace>
+		<AssemblyName>CompuMaster.Scopevisio.Teamwork</AssemblyName>
+		<TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+		<FileAlignment>512</FileAlignment>
+		<Deterministic>true</Deterministic>
+		<TargetFrameworkProfile />
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\Debug\</OutputPath>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='CI_CD|AnyCPU'">
+	  <DebugSymbols>true</DebugSymbols>
+	  <DebugType>full</DebugType>
+	  <Optimize>false</Optimize>
+	  <OutputPath>bin\Debug\</OutputPath>
+	  <DefineConstants>DEBUG;TRACE</DefineConstants>
+	  <ErrorReport>prompt</ErrorReport>
+	  <WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\Release\</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup>
+		<OptionExplicit>On</OptionExplicit>
+	</PropertyGroup>
+	<PropertyGroup>
+		<OptionCompare>Binary</OptionCompare>
+	</PropertyGroup>
+	<PropertyGroup>
+		<OptionStrict>Off</OptionStrict>
+	</PropertyGroup>
+	<PropertyGroup>
+		<NoWarn>CS1591</NoWarn>
+		<ApplicationIcon>favicon.ico</ApplicationIcon>
+		<PackageIconUrl />
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+	  <DocumentationFile>bin\Release\CompuMaster.Scopevisio.Teamwork.xml</DocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+	  <DocumentationFile>bin\Debug\CompuMaster.Scopevisio.Teamwork.xml</DocumentationFile>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="CompuMaster.Scopevisio.OpenApi" Version="2021.7.20.102" />
+		<PackageReference Include="JsonSubTypes" Version="1.8.0" />
+		<PackageReference Include="log4net" Version="2.0.12" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Ninject" Version="3.3.4" />
+		<PackageReference Include="RestSharp" Version="106.12.0" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net4.5.2' Or '$(TargetFramework)' == 'net48'">
+		<Reference Include="log4net" />
+		<Reference Include="JsonSubTypes" />
+		<Reference Include="Newtonsoft.Json" />
+		<Reference Include="RestSharp" />
+		<Reference Include="System.Web" />
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="System.Net.Http" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+	  <PackageReference Include="CompuMaster.CenterDevice.Rest">
+	    <Version>2021.4.28.100</Version>
+	  </PackageReference>
+	  <PackageReference Include="CompuMaster.Scopevisio.OpenApi">
+	    <Version>0.1.4</Version>
+	  </PackageReference>
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+	  <PackageReference Include="CompuMaster.CenterDevice.Rest">
+	    <Version>2021.4.28.100</Version>
+	  </PackageReference>
+	  <PackageReference Include="CompuMaster.Scopevisio.OpenApi">
+	    <Version>0.1.4</Version>
+	  </PackageReference>
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+	  <PackageReference Include="CompuMaster.CenterDevice.Rest">
+	    <Version>2021.4.28.100</Version>
+	  </PackageReference>
+	  <PackageReference Include="CompuMaster.Scopevisio.OpenApi">
+	    <Version>0.1.4</Version>
+	  </PackageReference>
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+	  <PackageReference Include="CompuMaster.CenterDevice.Rest">
+	    <Version>2021.7.20.100</Version>
+	  </PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="..\logo_64x64.png">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
+	</ItemGroup>
 </Project>
