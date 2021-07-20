@@ -8,6 +8,7 @@
 
 ## Getting Started
 
+Under the hood, Scopevisio Teamwork is a CenterDevice DMS. So, you can use the same implementation as for the CenterDevice client except that you need another login provider. Essentially you have to replace the IOClient for Teamwork.
 ### Console sample application for CenterDevice
 
 ```csharp
