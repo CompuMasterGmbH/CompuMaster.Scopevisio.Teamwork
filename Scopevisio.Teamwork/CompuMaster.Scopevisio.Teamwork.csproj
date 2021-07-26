@@ -76,58 +76,19 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
 	  <DocumentationFile>bin\Debug\CompuMaster.Scopevisio.Teamwork.xml</DocumentationFile>
 	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="CompuMaster.Scopevisio.OpenApi" Version="2021.7.20.102" />
-		<PackageReference Include="JsonSubTypes" Version="1.8.0" />
-		<PackageReference Include="log4net" Version="2.0.12" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="Ninject" Version="3.3.4" />
-		<PackageReference Include="RestSharp" Version="106.12.0" />
-		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'net4.5.2' Or '$(TargetFramework)' == 'net48'">
-		<Reference Include="log4net" />
-		<Reference Include="JsonSubTypes" />
-		<Reference Include="Newtonsoft.Json" />
-		<Reference Include="RestSharp" />
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
 		<Reference Include="System.Web" />
 		<Reference Include="System.Data.DataSetExtensions" />
-		<Reference Include="Microsoft.CSharp" />
 		<Reference Include="System.Net.Http" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-	  <PackageReference Include="CompuMaster.CenterDevice.Rest">
-	    <Version>2021.7.20.100</Version>
-	  </PackageReference>
-	  <PackageReference Include="CompuMaster.Scopevisio.OpenApi">
-	    <Version>2021.7.20.102</Version>
-	  </PackageReference>
-	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
-	  <PackageReference Include="CompuMaster.CenterDevice.Rest">
-	    <Version>2021.7.20.100</Version>
-	  </PackageReference>
-	  <PackageReference Include="CompuMaster.Scopevisio.OpenApi">
-	    <Version>2021.7.20.102</Version>
-	  </PackageReference>
-	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
-	  <PackageReference Include="CompuMaster.CenterDevice.Rest">
-	    <Version>2021.7.20.100</Version>
-	  </PackageReference>
-	  <PackageReference Include="CompuMaster.Scopevisio.OpenApi">
-	    <Version>2021.7.20.102</Version>
-	  </PackageReference>
-	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-	  <PackageReference Include="CompuMaster.CenterDevice.Rest">
-	    <Version>2021.7.20.100</Version>
-	  </PackageReference>
 	</ItemGroup>
 	<ItemGroup>
 	  <None Include="logo_64x64.png">
 	    <Pack>True</Pack>
 	    <PackagePath></PackagePath>
 	  </None>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="CompuMaster.CenterDevice.Rest" Version="2021.7.20.100" />
+	  <PackageReference Include="CompuMaster.Scopevisio.OpenApi" Version="2021.7.20.102" />
 	</ItemGroup>
 </Project>
