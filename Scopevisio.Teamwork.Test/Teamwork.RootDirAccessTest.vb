@@ -1,6 +1,6 @@
 Imports NUnit.Framework
 
-<TestFixture> Public Class Teamwork.RootDirAccessTest
+<TestFixture> Public Class TeamworkRootDirAccessTest
     Inherits TestBase
 
     <Test> Public Sub RootDirAccess()
