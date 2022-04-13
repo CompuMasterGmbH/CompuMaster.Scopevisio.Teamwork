@@ -12,13 +12,6 @@ Imports NUnit.Framework
         Assert.Pass()
     End Sub
 
-    '    <Test> Public Sub RestSharpDeserializationOfNoContentResultWithEmptyString()
-    '        RestSharp.SimpleJson.DeserializeObject(Nothing)
-    '        Assert.Catch(Of System.Runtime.Serialization.SerializationException)(Sub()
-    '                                                                                 RestSharp.SimpleJson.DeserializeObject("")
-    '                                                                             End Sub)
-    '    End Sub
-
     <Test> Public Sub ServerAccessAndAuthorization()
         Assert.NotNull(IOClient.CurrentAuthenticationContextUserID)
     End Sub
