@@ -27,7 +27,7 @@ namespace CompuMaster.Scopevisio.CenterDeviceApi
             return new TeamworkOAuthInfo(this.LoginEMailAddress, this.OAuthProvider.OpenscopeClient.Token);
         }
 
-        public void ValidateResponse(global::RestSharp.IRestResponse result)
+        public void ValidateResponse(global::RestSharp.RestResponse result)
         {
             if (result.StatusCode >= System.Net.HttpStatusCode.InternalServerError)
                 throw new System.Net.WebException("Server error", System.Net.WebExceptionStatus.UnknownError);
