@@ -3,6 +3,8 @@ Imports NUnit.Framework
 
 <TestFixture> Public NotInheritable Class Settings
 
+    Private Const AppTitle As String = "Scopevisio.Teamwork.Test"
+
     <Test, Explicit("Run only to persist login credentials on dev workstation")>
     Public Sub PersistInputValue()
         Dim username As String = Settings.InputLine("username")
@@ -63,7 +65,7 @@ Imports NUnit.Framework
         Using md5 As System.Security.Cryptography.MD5 = System.Security.Cryptography.MD5.Create()
             Dim inputBytes As Byte() = System.Text.Encoding.ASCII.GetBytes(fieldName)
             Dim hashBytes As Byte() = md5.ComputeHash(inputBytes)
-            Dim sb As StringBuilder = New StringBuilder()
+            Dim sb As New System.Text.StringBuilder()
 
             For i As Integer = 0 To hashBytes.Length - 1
                 sb.Append(hashBytes(i).ToString("X2"))
@@ -72,8 +74,9 @@ Imports NUnit.Framework
             HashedFieldName = sb.ToString()
         End Using
 
-        Return System.IO.Path.Combine(System.IO.Path.GetTempPath(), "~Buffer.Sample." & HashedFieldName & ".tmp")
+        Return System.IO.Path.Combine(System.IO.Path.GetTempPath(), "~Buffer." & AppTitle & "." & HashedFieldName & ".tmp")
     End Function
+
 
     Private Shared Sub PersistInputValue(ByVal fieldName As String, ByVal value As String)
         System.IO.File.WriteAllText(BufferFilePath(fieldName), value)
