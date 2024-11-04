@@ -3,11 +3,11 @@
 	<PropertyGroup>
 		<RootNamespace>CompuMaster.Scopevisio.Teamwork</RootNamespace>
 		<AssemblyName>CompuMaster.Scopevisio.Teamwork</AssemblyName>
-		<TargetFrameworks>netstandard2.0;netcoreapp3.1;net5.0;net48</TargetFrameworks>
-		<Version>2022.4.14.100</Version>
+		<TargetFrameworks>netstandard2.0;netcoreapp3.1;net6.0;net48</TargetFrameworks>
+		<Version>2024.11.04.100</Version>
 		<Authors>Jochen Wezel</Authors>
 		<Company>CompuMaster GmbH</Company>
-		<Copyright>2019-2022 CompuMaster GmbH</Copyright>
+		<Copyright>2019-2024 CompuMaster GmbH</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Description>Client access library for the Teamwork part of OpenScope API https://www.openscope.de/ (REST web API interface provided by Scopevisio AG, https://www.scopevisio.com/), library generated from Swagger/OpenAPI doc at https://appload.scopevisio.com/rest/swagger.json</Description>
 		<PackageProjectUrl>https://github.com/CompuMasterGmbH/CompuMaster.Scopevisio.Teamwork</PackageProjectUrl>
