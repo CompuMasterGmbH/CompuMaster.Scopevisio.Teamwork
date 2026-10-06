@@ -1,4 +1,4 @@
-using CenterDevice.Rest;
+﻿using CenterDevice.Rest;
 using CenterDevice.Rest.Clients.OAuth;
 using System;
 using System.Collections.Generic;

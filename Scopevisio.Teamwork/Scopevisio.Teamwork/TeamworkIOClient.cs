@@ -1,4 +1,4 @@
-using CenterDevice.IO;
+﻿using CenterDevice.IO;
     
 namespace CompuMaster.Scopevisio.Teamwork
 {
