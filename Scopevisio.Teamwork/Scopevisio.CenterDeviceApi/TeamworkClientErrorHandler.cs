@@ -27,10 +27,18 @@ namespace CompuMaster.Scopevisio.CenterDeviceApi
             return new TeamworkOAuthInfo(this.LoginEMailAddress, this.OAuthProvider.OpenscopeClient.Token);
         }
 
+        /// <inheritdoc/>
+        /// <remarks>Preserves the HTTP status and transport cause without exposing response bodies or request credentials.</remarks>
         public void ValidateResponse(global::RestSharp.RestResponse result)
         {
             if (result.StatusCode >= System.Net.HttpStatusCode.InternalServerError)
-                throw new System.Net.WebException("Server error", System.Net.WebExceptionStatus.UnknownError);
+            {
+                var error = new System.Net.WebException("Server error (HTTP " + (int)result.StatusCode + ").",
+                    result.ErrorException, System.Net.WebExceptionStatus.UnknownError, null);
+                error.Data["CompuMaster.Scopevisio.Teamwork.HttpStatusCode"] = (int)result.StatusCode;
+                error.Data["CompuMaster.Scopevisio.Teamwork.ResponseStatus"] = result.ResponseStatus.ToString();
+                throw error;
+            }
         }
     }
 }
