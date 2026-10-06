@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<RootNamespace>CompuMaster.Scopevisio.Teamwork</RootNamespace>
@@ -88,7 +88,17 @@
 	  </None>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="CompuMaster.CenterDevice.Rest" Version="2024.11.5.100" />
-	  <PackageReference Include="CompuMaster.Scopevisio.OpenApi" Version="2024.11.5.100" />
+	  <PackageReference Condition="'$(CenterDeviceRestProject)' == ''" Include="CompuMaster.CenterDevice.Rest" Version="2024.11.5.100" />
+	  <PackageReference Condition="'$(OpenScopeApiProject)' == ''" Include="CompuMaster.Scopevisio.OpenApi" Version="2024.11.5.100" />
 	</ItemGroup>
+  <PropertyGroup>
+    <EnableNativeAsync Condition="'$(EnableNativeAsync)' == ''">false</EnableNativeAsync>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(EnableNativeAsync)' != 'true'">
+    <Compile Remove="**/*.Async.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(CenterDeviceRestProject)" Condition="'$(CenterDeviceRestProject)' != ''" />
+    <ProjectReference Include="$(OpenScopeApiProject)" Condition="'$(OpenScopeApiProject)' != ''" />
+  </ItemGroup>
 </Project>

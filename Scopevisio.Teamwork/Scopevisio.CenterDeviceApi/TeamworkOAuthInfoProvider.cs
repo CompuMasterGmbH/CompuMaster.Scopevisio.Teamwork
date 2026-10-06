@@ -1,4 +1,4 @@
-﻿using CenterDevice.Rest;
+using CenterDevice.Rest;
 using CenterDevice.Rest.Clients.OAuth;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CompuMaster.Scopevisio.CenterDeviceApi
 {
-    public class TeamworkOAuthInfoProvider : CenterDevice.Rest.Clients.OAuth.IOAuthInfoProvider
+    public partial class TeamworkOAuthInfoProvider : CenterDevice.Rest.Clients.OAuth.IOAuthInfoProvider
     {
         /// <summary>
         /// Configuration for accessing OpenScope API

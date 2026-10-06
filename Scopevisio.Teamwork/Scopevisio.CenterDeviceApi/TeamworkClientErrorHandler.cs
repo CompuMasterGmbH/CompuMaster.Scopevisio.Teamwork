@@ -1,4 +1,4 @@
-﻿using CenterDevice.Rest;
+using CenterDevice.Rest;
 using CenterDevice.Rest.Clients.OAuth;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CompuMaster.Scopevisio.CenterDeviceApi
 {
-    public class TeamworkClientErrorHandler : CenterDevice.Rest.Clients.IRestClientErrorHandler
+    public partial class TeamworkClientErrorHandler : CenterDevice.Rest.Clients.IRestClientErrorHandler
     {
         /// <summary>
         /// Configuration for accessing OpenScope API
