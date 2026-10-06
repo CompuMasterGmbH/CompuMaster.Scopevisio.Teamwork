@@ -1,4 +1,4 @@
-﻿using CenterDevice.Rest;
+using CenterDevice.Rest;
 using CenterDevice.Rest.Clients.OAuth;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace CompuMaster.Scopevisio.CenterDeviceApi
     /// <summary>
     /// Teamwork client for low level API access to Teamwork's underlying CenterDevice services
     /// </summary>
-    public class TeamworkRestClient : CenterDevice.Rest.Clients.CenterDeviceClientBase
+    public partial class TeamworkRestClient : CenterDevice.Rest.Clients.CenterDeviceClientBase
     {
         public TeamworkRestClient(CompuMaster.Scopevisio.OpenApi.OpenScopeApiClient openscopeClient)
             : this(new TeamworkOAuthInfoProvider(openscopeClient), openscopeClient.AdditionalApi.GetApplicationContextWithHttpInfo().Data)
@@ -28,6 +28,7 @@ namespace CompuMaster.Scopevisio.CenterDeviceApi
                   )
         {
             this.ApplicationContext = applicationContext;
+            this.OpenscopeClient = oauthProvider.OpenscopeClient;
         }
 
         const string TEAMWORK_ENDPOINT_URL = "https://appload.scopevisio.com/rest/teamworkbridge/";

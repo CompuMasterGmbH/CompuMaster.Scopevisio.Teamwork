@@ -1,8 +1,8 @@
-﻿using CenterDevice.IO;
+using CenterDevice.IO;
     
 namespace CompuMaster.Scopevisio.Teamwork
 {
-    public class TeamworkIOClient : CenterDevice.IO.IOClientBase
+    public partial class TeamworkIOClient : CenterDevice.IO.IOClientBase
     {
         public TeamworkIOClient(string scopevisioCustomerNumber, string username, string password)
             : this(CreateAndAuthorizeOpenScopeApiClientInstance(scopevisioCustomerNumber, username, password))
