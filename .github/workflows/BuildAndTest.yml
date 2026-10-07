@@ -1,4 +1,4 @@
-name: Build and Test
+﻿name: Build and Test
 
 # PREREQUISITES FOR PUSH-BACK OF TEST RESULTS
 # Please note: test project usually required nuget package JUnitTestLogger
@@ -76,6 +76,19 @@ jobs:
 
             - name: Build
               run: dotnet build --configuration=${{env.BUILD_CONFIGURATION}} --no-restore
+            - name: Run isolated native authorization tests (.NET 8)
+              run: dotnet test Scopevisio.Teamwork.AsyncTests/Scopevisio.Teamwork.AsyncTests.csproj --framework net8.0 --configuration=${{env.BUILD_CONFIGURATION}} --logger trx --results-directory isolated-test-results
+
+            - name: Run isolated native authorization tests (.NET Framework)
+              if: startsWith(matrix.os, 'windows')
+              run: dotnet test Scopevisio.Teamwork.AsyncTests/Scopevisio.Teamwork.AsyncTests.csproj --framework net48 --configuration=${{env.BUILD_CONFIGURATION}} --logger trx --results-directory isolated-test-results
+
+            - name: Retain isolated authorization evidence
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: isolated-authorization-${{ matrix.os }}
+                  path: isolated-test-results
 
 #            - name: Run Unit Tests
 #              run: dotnet test --framework net8.0 --results-directory test-results --logger junit --configuration=${{env.BUILD_CONFIGURATION}} --no-restore
