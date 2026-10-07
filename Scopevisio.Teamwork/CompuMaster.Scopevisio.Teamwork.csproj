@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<RootNamespace>CompuMaster.Scopevisio.Teamwork</RootNamespace>
 		<AssemblyName>CompuMaster.Scopevisio.Teamwork</AssemblyName>
 		<TargetFrameworks>netstandard2.0;net6.0;net48</TargetFrameworks>
-		<Version>2024.11.04.100</Version>
+		<Version>2026.10.07.0</Version>
 		<Authors>Jochen Wezel</Authors>
 		<Company>CompuMaster GmbH</Company>
-		<Copyright>2019-2024 CompuMaster GmbH</Copyright>
+		<Copyright>2019-2026 CompuMaster GmbH</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Description>Client access library for the Teamwork part of OpenScope API https://www.openscope.de/ (REST web API interface provided by Scopevisio AG, https://www.scopevisio.com/), library generated from Swagger/OpenAPI doc at https://appload.scopevisio.com/rest/swagger.json</Description>
 		<PackageProjectUrl>https://github.com/CompuMasterGmbH/CompuMaster.Scopevisio.Teamwork</PackageProjectUrl>
@@ -88,11 +88,11 @@
 	  </None>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Condition="'$(CenterDeviceRestProject)' == ''" Include="CompuMaster.CenterDevice.Rest" Version="2024.11.5.100" />
-	  <PackageReference Condition="'$(OpenScopeApiProject)' == ''" Include="CompuMaster.Scopevisio.OpenApi" Version="2024.11.5.100" />
+	  <PackageReference Condition="'$(CenterDeviceRestProject)' == ''" Include="CompuMaster.CenterDevice.Rest" Version="2026.10.07.0" />
+	  <PackageReference Condition="'$(OpenScopeApiProject)' == ''" Include="CompuMaster.Scopevisio.OpenApi" Version="2026.10.07.0" />
 	</ItemGroup>
   <PropertyGroup>
-    <EnableNativeAsync Condition="'$(EnableNativeAsync)' == ''">false</EnableNativeAsync>
+    <EnableNativeAsync Condition="'$(EnableNativeAsync)' == ''">true</EnableNativeAsync>
   </PropertyGroup>
   <ItemGroup Condition="'$(EnableNativeAsync)' != 'true'">
     <Compile Remove="**/*.Async.cs" />
