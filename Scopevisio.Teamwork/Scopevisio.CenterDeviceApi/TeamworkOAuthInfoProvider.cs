@@ -20,12 +20,11 @@ namespace CompuMaster.Scopevisio.CenterDeviceApi
 
         public CompuMaster.Scopevisio.OpenApi.OpenScopeApiClient OpenscopeClient { get; set; }
 
-        private OAuthInfo getOAuthInfo = null;
+        /// <inheritdoc/>
+        /// <remarks>Uses the current installed token and the same session admission as asynchronous callers. Account identity is cached per OpenScope client; OAuth information is rebuilt after token rotation.</remarks>
         public OAuthInfo GetOAuthInfo(string userId)
         {
-            if ((getOAuthInfo == null) || (getOAuthInfo.UserId != userId))
-                this.getOAuthInfo = new TeamworkOAuthInfo(OpenscopeClient.AdditionalApi.GetApplicationContextWithHttpInfo().Data.User.Login, OpenscopeClient.Token);
-            return this.getOAuthInfo;
+            return GetOAuthInfoCoreAsync(System.Threading.CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
         }
     }
 }
