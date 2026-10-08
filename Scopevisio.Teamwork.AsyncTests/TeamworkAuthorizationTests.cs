@@ -177,6 +177,121 @@ namespace CompuMaster.Scopevisio.Teamwork.AsyncTests
             }
         }
 
+        [Test]
+        public async Task SynchronousLookupObservesAnAsynchronouslyRotatedToken()
+        {
+            var handler = new FakeHandler((request, token) => Task.FromResult(request.Method == HttpMethod.Get ? AccountResponse() : TokenHttpResponse()));
+            using (var transport = new HttpClient(handler))
+            {
+                var client = CreateClient(transport);
+                var provider = new TeamworkOAuthInfoProvider(client);
+                var old = provider.GetOAuthInfo("fixture-user-id");
+                var errors = new TeamworkClientErrorHandler("fixture-login", provider);
+                await errors.RefreshTokenAsync(old);
+                var current = provider.GetOAuthInfo("fixture-user-id");
+                Assert.That(current.access_token, Is.EqualTo("fresh-token"));
+                Assert.That(current.refresh_token, Is.EqualTo("fresh-refresh"));
+                Assert.That(current.UserId, Is.EqualTo(old.UserId));
+                Assert.That(current.Email, Is.EqualTo(old.Email));
+                Assert.That(current.TenantId, Is.EqualTo(old.TenantId));
+                Assert.That(handler.Calls, Is.EqualTo(2));
+            }
+        }
+
+        [Test]
+        public async Task SynchronousRefreshRenewsAndReusesTheSharedSession()
+        {
+            var handler = new FakeHandler((request, token) => Task.FromResult(request.Method == HttpMethod.Get ? AccountResponse() : TokenHttpResponse()));
+            using (var transport = new HttpClient(handler))
+            {
+                var client = CreateClient(transport);
+                var provider = new TeamworkOAuthInfoProvider(client);
+                var errors = new TeamworkClientErrorHandler("fixture-login", provider);
+                var rejected = new OAuthInfo { access_token = "old-token" };
+                var current = errors.RefreshToken(rejected);
+                Assert.That(current.access_token, Is.EqualTo("fresh-token"));
+                Assert.That(errors.RefreshToken(rejected).access_token, Is.EqualTo("fresh-token"));
+                Assert.That((await provider.GetOAuthInfoAsync("fixture-user-id")).access_token, Is.EqualTo("fresh-token"));
+                Assert.That(client.Config.AccessToken, Is.EqualTo("fresh-token"));
+                Assert.That(handler.TokenCalls, Is.EqualTo(1));
+                Assert.That(handler.Calls, Is.EqualTo(2));
+            }
+        }
+
+        [Test]
+        public async Task ConcurrentSynchronousAndAsynchronousRefreshesAdmitOneGrant()
+        {
+            var entered = Signal();
+            var release = Signal();
+            var syncEntered = Signal();
+            var handler = new FakeHandler(async (request, token) =>
+            {
+                if (request.Method == HttpMethod.Get) return AccountResponse();
+                entered.TrySetResult(true);
+                await release.Task;
+                return TokenHttpResponse();
+            });
+            using (var transport = new HttpClient(handler))
+            {
+                var client = CreateClient(transport);
+                var first = new TeamworkClientErrorHandler("fixture-login", new TeamworkOAuthInfoProvider(client));
+                var second = new TeamworkClientErrorHandler("fixture-login", new TeamworkOAuthInfoProvider(client));
+                var rejected = new OAuthInfo { access_token = "old-token" };
+                var owner = first.RefreshTokenAsync(rejected);
+                await entered.Task;
+                var follower = Task.Run(() => { syncEntered.SetResult(true); return second.RefreshToken(rejected); });
+                await syncEntered.Task;
+                release.SetResult(true);
+                var values = await Task.WhenAll(owner, follower);
+                Assert.That(handler.TokenCalls, Is.EqualTo(1));
+                Assert.That(handler.Calls, Is.EqualTo(2));
+                Assert.That(values[0].access_token, Is.EqualTo("fresh-token"));
+                Assert.That(values[1].access_token, Is.EqualTo("fresh-token"));
+                Assert.That(values[1].UserId, Is.EqualTo("fixture-user-id"));
+                Assert.That(values[1].TenantId, Is.EqualTo("fixture-tenant"));
+                Assert.That(values[1].Email, Is.EqualTo("fixture-login"));
+            }
+        }
+
+        [TestCase(HttpStatusCode.BadRequest)]
+        [TestCase(HttpStatusCode.ServiceUnavailable)]
+        public async Task FailedSynchronousRefreshPreservesTheTokenAndAllowsAsynchronousRecovery(HttpStatusCode status)
+        {
+            var attempt = 0;
+            var handler = new FakeHandler((request, token) =>
+            {
+                if (request.Method == HttpMethod.Get) return Task.FromResult(AccountResponse());
+                if (++attempt == 1) return Task.FromResult(new HttpResponseMessage(status) { Content = new StringContent("{\"error\":\"invalid_grant\"}") });
+                return Task.FromResult(TokenHttpResponse());
+            });
+            using (var transport = new HttpClient(handler))
+            {
+                var client = CreateClient(transport);
+                var errors = new TeamworkClientErrorHandler("fixture-login", new TeamworkOAuthInfoProvider(client));
+                var rejected = new OAuthInfo { access_token = "old-token" };
+                var error = Assert.Throws<ApiException>((Action)(() => { errors.RefreshToken(rejected); }));
+                Assert.That(error.ErrorCode, Is.EqualTo((int)status));
+                Assert.That(client.Token.AccessToken, Is.EqualTo("old-token"));
+                Assert.That(client.Token.RefreshToken, Is.EqualTo("old-refresh"));
+                Assert.That((await errors.RefreshTokenAsync(rejected)).access_token, Is.EqualTo("fresh-token"));
+                Assert.That(handler.TokenCalls, Is.EqualTo(2));
+            }
+        }
+
+        [Test]
+        public void FailedSynchronousAccountLookupCanRecover()
+        {
+            var count = 0;
+            var handler = new FakeHandler((request, token) => Task.FromResult(++count == 1 ? JsonResponse("{\"user\":null}") : AccountResponse()));
+            using (var transport = new HttpClient(handler))
+            {
+                var provider = new TeamworkOAuthInfoProvider(CreateClient(transport));
+                Assert.Throws<InvalidOperationException>((Action)(() => { provider.GetOAuthInfo("fixture-user-id"); }));
+                Assert.That(provider.GetOAuthInfo("fixture-user-id").Email, Is.EqualTo("fixture-login"));
+                Assert.That(handler.Calls, Is.EqualTo(2));
+            }
+        }
+
         private static TaskCompletionSource<bool> Signal() => new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
         private static OpenScopeApiClient CreateClient(HttpClient transport)
         {

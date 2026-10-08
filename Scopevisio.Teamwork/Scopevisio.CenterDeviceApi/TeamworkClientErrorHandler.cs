@@ -22,9 +22,11 @@ namespace CompuMaster.Scopevisio.CenterDeviceApi
         public TeamworkOAuthInfoProvider OAuthProvider { get; set; }
         public string LoginEMailAddress { get; set; }
 
+        /// <inheritdoc/>
+        /// <remarks>Refreshes through the shared OpenScope session admission and reuses an already rotated token for concurrent failures. Refresh failures are propagated without replacing the installed token.</remarks>
         public OAuthInfo RefreshToken(OAuthInfo oAuthInfo)
         {
-            return new TeamworkOAuthInfo(this.LoginEMailAddress, this.OAuthProvider.OpenscopeClient.Token);
+            return OAuthProvider.RefreshOAuthInfoAsync(oAuthInfo, System.Threading.CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         /// <inheritdoc/>
