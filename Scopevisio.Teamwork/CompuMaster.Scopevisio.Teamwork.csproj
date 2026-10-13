@@ -4,7 +4,7 @@
 		<RootNamespace>CompuMaster.Scopevisio.Teamwork</RootNamespace>
 		<AssemblyName>CompuMaster.Scopevisio.Teamwork</AssemblyName>
 		<TargetFrameworks>netstandard2.0;net6.0;net48</TargetFrameworks>
-		<Version>2026.10.08.0</Version>
+		<Version>2026.10.13.0</Version>
 		<Authors>Jochen Wezel</Authors>
 		<Company>CompuMaster GmbH</Company>
 		<Copyright>2019-2026 CompuMaster GmbH</Copyright>
@@ -88,8 +88,8 @@
 	  </None>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Condition="'$(CenterDeviceRestProject)' == ''" Include="CompuMaster.CenterDevice.Rest" Version="2026.10.07.0" />
-	  <PackageReference Condition="'$(OpenScopeApiProject)' == ''" Include="CompuMaster.Scopevisio.OpenApi" Version="2026.10.07.0" />
+	  <PackageReference Condition="'$(CenterDeviceRestProject)' == ''" Include="CompuMaster.CenterDevice.Rest" Version="2026.10.13.0" />
+	  <PackageReference Condition="'$(OpenScopeApiProject)' == ''" Include="CompuMaster.Scopevisio.OpenApi" Version="2026.10.13.0" />
 	</ItemGroup>
   <PropertyGroup>
     <EnableNativeAsync Condition="'$(EnableNativeAsync)' == ''">true</EnableNativeAsync>
