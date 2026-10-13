@@ -1,8 +1,8 @@
-name: Publish/Upload dotnet package on release
+﻿name: Publish/Upload dotnet package on release
 
 # PLEASE NOTE: PUBLISHING/DEPLOYMENT
 # Release is to be created manually at GitHub releases management page
-# - release name usually contains "v1.2.3"
+# - release tag must equal the explicit project version, for example "2026.10.13.0"
 # After creating a GitHub release, following actions will automatically run:
 # 1. NuGet package (version as defined in VS.Net project property "package version")
 # 2. Attaching of compiled binaries to GitHub release
@@ -34,6 +34,24 @@ jobs:
             # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
             - name: Checkout
               uses: actions/checkout@v4
+
+            - name: Validate release tag and package version
+              env:
+                  RELEASE_TAG: ${{ github.event.release.tag_name }}
+              run: |
+                  python - <<'PY'
+                  import os
+                  import re
+                  import xml.etree.ElementTree as ET
+                  versions = ET.parse("Scopevisio.Teamwork/CompuMaster.Scopevisio.Teamwork.csproj").findall("./PropertyGroup/Version")
+                  tag = os.environ.get("RELEASE_TAG", "")
+                  if os.environ.get("GITHUB_EVENT_NAME") != "release" or len(versions) != 1:
+                      raise SystemExit("Publication requires a release event and one explicit project version.")
+                  version = versions[0].text
+                  if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+", tag) or version != tag:
+                      raise SystemExit("Release tag must equal the explicit package version.")
+                  print("Verified release version:", version)
+                  PY
 
             - name: Setup .NET Core
               uses: actions/setup-dotnet@v4

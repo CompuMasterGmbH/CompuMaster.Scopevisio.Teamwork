@@ -23,6 +23,11 @@ on:
     schedule:
     - cron: "55 23 * * 6"
 
+# This lock is repository-scoped; cross-repository and local account access still needs coordination.
+concurrency:
+    group: teamwork_test_account
+    cancel-in-progress: false
+
 env:
     # Path to the solution file relative to the root of the project
     SOLUTION_FILE_PATH: .
@@ -40,6 +45,7 @@ jobs:
 
         strategy:
             fail-fast: false
+            max-parallel: 1
             matrix:
                 os: [windows-latest, ubuntu-latest, macos-latest]
                 include:
